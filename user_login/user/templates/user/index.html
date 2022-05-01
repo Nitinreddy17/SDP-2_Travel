@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Sai Nitin Reddy">
+
+  <title>{{title}}</title>
+
+  {% load static %}
+{% load crispy_forms_tags %}
+  <!-- bootstrap file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- bootstrap file-->
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="{% static "index.css" %}" />
+
+
+  <!-- message here -->
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+  <!--_______________________________________________-->
+
+
+
+</head>
+
+<body class="container-fluid">
+
+
+  <header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" class="styleheader" href="{% url "index" %}">Sight See</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url "hospitality" %}"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-map-marker"></span> &nbsp; Book Now</a></li>
+            <li><a href="{% url "aboutus" %}"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; About us</a></li>
+            <li><a href="{% url "datascience" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Data Visualization</a></li>
+            <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+            <center><h4>Sight See Tours</h4></center>
+            {% else %}
+            <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+            <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="row">
+    {% block start %}
+    {% if user.is_authenticated %}
+    <center><h3>Welcome Back  {{user.username}} !</h3></center>
+
+   <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1590px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  {% load static %}
+  <img src="{% static 'images/slide1.jpg' %}" alt="Paris" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="{% static 'images/slide2.png' %}" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="{% static 'images/slide3.png' %}" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+  <div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="{% static 'images/slide4.png' %}" style="width:100%">
+  <div class="text">Caption Four</div>
+</div>
+
+  <div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="{% static 'images/slide5.png' %}" style="width:100%">
+  <div class="text">Caption Five</div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+  <span class="dot" onclick="currentSlide(5)"></span>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 1850); // Change image every 2 seconds
+}
+</script>
+<marquee width="60%" direction="left" height="100px"> WebSite Will be Under Maintanance from 02-May-2022. We are sorry for Your Inconvenience </marquee>
+
+</body>
+</html>
+
+    <center><b><h4>You Can Now Start Exploring Our New Travel & Tourism Website</h4></b>
+            <br><h4> Get New Deals And Travel Packages</h4></br>
+      </center></br>
+
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- About Section -->
+          <div class="w3-container w3-center" style="padding:100px 15px"  id="about">
+            <h3 class="w3-center">About US</h3>
+            <p class="w3-center w3-large">We Always work towards making the Customers Satisfied and Expecting the Trust from them !!</p>
+            <div class="w3-row-padding w3-center" style="margin-top:64px">
+              <div class="w3-quarter w3-center">
+                <i class="fa fa-rupee w3-margin-bottom w3-jumbo" style="color:green"></i>
+                <p>We Offer prices that satisfy the customers with some Exciting Offers and Discount's. we provide secure, transparent and risk-free banking at your fingertips.</p>
+              </div>
+              <div class="w3-quarter w3-center">
+                <i class="fa fa-cc-visa w3-margin-bottom w3-jumbo" style="color:blue"></i>
+                <p class="w3-large">Flexible Payments</p>
+                <p>Just select the ‘Price’ filter once the available flight options are displayed and adjust according to your convenience.</p>
+              </div>
+              <div class="w3-quarter w3-center">
+                <i class="fa fa-mobile-phone w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Support</p>
+                <p>You cam mail us at any time and Expect the Quick Responses from Our Service Team</p>
+              </div>
+            </div>
+          </div>
+
+
+    <div class="w3-container" style="padding:128px 16px" id="team">
+            <h3 class="w3-center">Check Out and Travel to Destinations!</h3>
+            <p class="w3-center w3-large"></p>
+            <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://festive-davinci-a6bf28.netlify.app/static/media/taxi.65d482d2.jpg" alt="John" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Sight See </h3>
+                    <p class="w3-opacity">Cab Booking Page</p>
+                    <p>Dear traveler, keeping you safe is our utmost priority. We ensure to make your travel convenient and safe with minimum or no contact. Opt for our sanitized cabs and travel worry-free.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>Know More</button></p>
+                  </div>
+                </div>
+              </div>
+
+		   <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://festive-davinci-a6bf28.netlify.app/static/media/volvo1.0635861e.png" alt="John" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Sight See</h3>
+                    <p class="w3-opacity">Bus Booking Page</p>
+                    <p>Seating arrangements made keeping Social distancing, All Buses to be sanitized after every trip with hospital grade disinfectants.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>Know More</button></p>
+                  </div>
+                </div>
+              </div>
+
+		   <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://festive-davinci-a6bf28.netlify.app/static/media/flight2.82598f42.jpg" alt="John" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Sight See</h3>
+                    <p class="w3-opacity">Flight Booking Page</p>
+                    <p>we try to provide our customers affordable flight tickets. We give exclusive offers and rewards which makes your flight booking affordable. Before booking an air ticket you must check our offers section.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>Know More</button></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+    {% else %}
+    <div>
+      <center><h1>Welcome to Sight See</h1></center>
+    </div>
+
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <head>
+    <title>W3.CSS Template</title>
+      <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <style>
+          body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+          body, html {
+            height: 100%;
+            line-height: 1.8;
+          }
+
+          /* Full height image header */
+          .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("https://www.w3schools.com/w3images/mac.jpg");
+            min-height: 100%;
+          }
+
+          .w3-bar .w3-button {
+            padding: 16px;
+          }
+          </style>
+          </head>
+          <body>
+          <!-- About Section -->
+
+          <center><h7>Sight See Tours</h7></center>
+          <div class="w3-container" style="padding:100px 16px" id="about">
+            <h3 class="w3-center">About US</h3>
+            <p class="w3-center w3-large">We Always work towards making the Customers Satisfied and Expecting the Trust from them !!</p>
+            <div class="w3-row-padding w3-center" style="margin-top:64px">
+              <div class="w3-quarter">
+                <i class="fa fa-rupee w3-margin-bottom w3-jumbo" style="color:green"></i>
+                <p>We Offer prices that satisfy the customers with some Exciting Offers and Discount's. we provide secure, transparent and risk-free banking at your fingertips.</p>
+              </div>
+              <div class="w3-quarter">
+                <i class="fa fa-users w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Trusted Partners</p>
+                <p>The simplest way to stay safe and protect those around you is through good hygiene.</p>
+              </div>
+              <div class="w3-quarter">
+                <i class="fa fa-cc-visa w3-margin-bottom w3-jumbo" style="color:blue"></i>
+                <p class="w3-large">Flexible Payments</p>
+                <p>Just select the ‘Price’ filter once the available flight options are displayed and adjust according to your convenience.</p>
+              </div>
+              <div class="w3-quarter">
+                <i class="fa fa-mobile-phone w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Support</p>
+                <p>You cam mail us at any time and Expect the Quick Responses from Our Service Team</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Promo Section - "We know design" -->
+          <div class="w3-container w3-light-grey" style="padding:128px 16px">
+            <div class="w3-row-padding">
+              <div class="w3-col m6">
+                <h3>We know design.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
+                <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Works</a></p>
+              </div>
+              <div class="w3-col m6">
+                {% load static %}
+                <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg" alt="Buildings" width="700" height="394">
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- Promo Section "Statistics" -->
+          <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">14+</span>
+              <br>Partners
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">55+</span>
+              <br>Locations
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">100K+</span>
+              <br>Happy Clients
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">15+</span>
+              <br>Services
+            </div>
+          </div>
+
+          <!-- Work Section -->
+          <div class="w3-container" style="padding:128px 16px" id="work">
+            <h3 class="w3-center">OUR WORK</h3>
+            <p class="w3-center w3-large">What we've done for people</p>
+
+            <div class="w3-row-padding" style="margin-top:64px">
+              <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
+              </div>
+              <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+              </div>
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+              </div>
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+              </div>
+            </div>
+
+            <div class="w3-row-padding w3-section">
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
+              </div>
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
+              </div>
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
+              </div>
+              <div class="w3-col l3 m6">
+                {% load static %}
+                <img src="https://www.w3schools.com/w3images/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal for full size images on click-->
+          <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+            <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+              <img id="img01" class="w3-image">
+              <p id="caption" class="w3-opacity w3-large"></p>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="w3-container w3-light-grey w3-padding-64">
+            <div class="w3-row-padding">
+              <div class="w3-col m6">
+                <h3>Our Skills.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
+                tempor incididunt ut labore et dolore.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
+                tempor incididunt ut labore et dolore.</p>
+              </div>
+              <div class="w3-col m6">
+                <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Travel</p>
+                <div class="w3-grey">
+                  <div class="w3-container w3-dark-grey w3-center" style="width:90%">90%</div>
+                </div>
+                <p class="w3-wide"><i class="fa fa-desktop w3-margin-right"></i>Tourism</p>
+                <div class="w3-grey">
+                  <div class="w3-container w3-dark-grey w3-center" style="width:85%">85%</div>
+                </div>
+                <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Hospitality</p>
+                <div class="w3-grey">
+                  <div class="w3-container w3-dark-grey w3-center" style="width:75%">73%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+            <h3 class="w3-center">CONTACT</h3>
+            <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+            <div style="margin-top:48px">
+              <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Chicago, US</p>
+              <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+              <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+              <br>
+              <form action="/action_page.php" target="_blank">
+                <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+                <p>
+                  <button class="w3-button w3-black" type="submit">
+                    <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                  </button>
+                </p>
+              </form>
+            </div>
+          </div>
+           <!-- Team Section -->
+          <div class="w3-container" style="padding:128px 16px" id="team">
+            <h3 class="w3-center">THE TEAM</h3>
+            <p class="w3-center w3-large">The ones who runs this company</p>
+            <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width:100%">
+                  <div class="w3-container">
+                    <h3>John Doe</h3>
+                    <p class="w3-opacity">CEO & Founder</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Anja Doe</h3>
+                    <p class="w3-opacity">Art Director</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  {% load static %}
+                  <img src="https://www.w3schools.com/w3images/team3.jpg" alt="Mike" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Mike Ross</h3>
+                    <p class="w3-opacity">Web Designer</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="https://www.w3schools.com/w3images/team4.jpg" alt="Dan" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Dan Star</h3>
+                    <p class="w3-opacity">Designer</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+          // Modal Image Gallery
+          function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+          }
+
+
+          // Toggle between showing and hiding the sidebar when clicking the menu icon
+          var mySidebar = document.getElementById("mySidebar");
+
+          function w3_open() {
+            if (mySidebar.style.display === 'block') {
+              mySidebar.style.display = 'none';
+            } else {
+              mySidebar.style.display = 'block';
+            }
+          }
+
+          // Close the sidebar with the close button
+          function w3_close() {
+              mySidebar.style.display = "none";
+          }
+          </script>
+          </body>
+
+    {% endif %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>
